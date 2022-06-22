@@ -29,8 +29,14 @@ class _MyappState extends State<Myapp> {
             if (snapshot.hasError) {
               print("==========${snapshot.error}");
             } else if (snapshot.hasData) {
-              List<dynamic> l1=snapshot.data;
-              return Card();
+              // List<dynamic> l1=snapshot.data;
+              return Card(
+                color: Colors.red,
+                child: Container(
+                  height: 100,
+
+                ),
+              );
             }
             return Container(
               child: Center(
@@ -48,6 +54,6 @@ class _MyappState extends State<Myapp> {
     var res = await http.get(uri);
     var Jsn = convert.jsonDecode(res.body);
 
-    return Jsn.map((e) => Modalcalss.fromJson(e)).toList;
+    return Jsn.map((e) => Modalcalss.fromJson(e)).toList();
   }
 }
