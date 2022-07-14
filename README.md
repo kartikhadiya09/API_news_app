@@ -1,6 +1,14 @@
 # apicalling
 
-A new Flutter project.
+
+## Screenshots
+<p float="center">
+<img src="https://user-images.githubusercontent.com/96433134/178923326-e1be336e-f985-4974-b07a-685fe4b15a55.PNG" width=23% height=35%>
+<img src="https://user-images.githubusercontent.com/96433134/178923346-e62ef9e8-b43b-4fc3-838c-1b4cb1b0c5da.PNG" width=23% height=35%>
+<img src="https://user-images.githubusercontent.com/96433134/178923342-59a58dca-30e1-4900-ad9f-8dd53e72fc85.PNG" width=23% height=35%>
+<img src="https://user-images.githubusercontent.com/96433134/178923338-55cdea23-f03a-4d9d-acc2-4f7720325877.PNG" width=23% height=35%>
+    
+</p>
 
 ## Getting Started
 
