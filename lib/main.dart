@@ -1,3 +1,6 @@
+
+
+import 'package:apicalling/Second_page.dart';
 import 'package:apicalling/datamodel.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert' as convert;
@@ -10,7 +13,10 @@ import 'package:intl/intl.dart';
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: Myapp(),
+    routes: {
+      '/':(context)=>Myapp(),
+      'Second_page':(context)=>Second_page(),
+    },
   ));
 }
 
@@ -25,6 +31,7 @@ class _MyappState extends State<Myapp> {
   var dt = DateTime.now();
   String realtz = DateFormat("EEEEE , dd , yyyy").format(DateTime.now());
   String day = DateFormat("dd").format(DateTime.now());
+  List men =[];
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -48,39 +55,53 @@ class _MyappState extends State<Myapp> {
                 return ListView.builder(
                     itemCount: l1.articles!.length,
                     itemBuilder: (context, index) {
-                      return Card(
-                        color: Colors.blue.shade100,
-                        child: Container(
-                          height: 250,
-                          child: Expanded(
-                            child: Builder(builder: (context) {
-                              return Column(
-                                children: [
-                                  Card(
-                                    color: Colors.blue.shade300,
-                                    child: Container(
-                                      height: 60,
-                                      width: double.infinity,
-                                      child: Text(
-                                        "${l1.articles![index].title}",
-                                        style: TextStyle(
-                                            fontSize: 20, wordSpacing: 1),
+                      return InkWell(
+                        onTap: (){
+                          setState(() {
+                            men.clear();
+                            men.add(l1.articles![index].title);
+                            men.add(l1.articles![index].urlToImage);
+                            men.add(l1.articles![index].description);
+                            men.add(l1.articles![index].content);
+                            men.add(l1.articles![index].source!.name);
+                            men.add(l1.articles![index].url);
+                          });
+                          Navigator.pushNamed(context, 'Second_page',arguments: men);
+                        },
+                        child: Card(
+                          color: Colors.blue,
+                          child: Container(
+                            height: 300,
+                            child: Expanded(
+                              child: Builder(builder: (context) {
+                                return Column(
+                                  children: [
+                                    Card(
+                                      color: Colors.blue.shade100,
+                                      child: Container(
+                                        height: 60,
+                                        width: double.infinity,
+                                        child: Text(
+                                          "${l1.articles![index].title}",
+                                          style: TextStyle(
+                                              fontSize: 20, wordSpacing: 1),
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  Card(
-                                    child: SizedBox(
-                                      height: 174,
-                                      width: double.infinity,
-                                      child: Image.network(
-                                        "${l1.articles![index].urlToImage}",
-                                        fit: BoxFit.cover,
+                                    Card(
+                                      child: SizedBox(
+                                        height: 220,
+                                        width: double.infinity,
+                                        child: Image.network(
+                                          "${l1.articles![index].urlToImage}",
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                ],
-                              );
-                            }),
+                                  ],
+                                );
+                              }),
+                            ),
                           ),
                         ),
                       );
